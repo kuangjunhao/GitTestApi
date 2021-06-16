@@ -60,5 +60,6 @@ if __name__ == '__main__':
     cases=excel.get_cases()
     print(cases)
     # a=excel.write_excel(2,"去","pass")
+    A="我是中国人"
 
 
