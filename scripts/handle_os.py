@@ -13,3 +13,6 @@ cases_path = os.path.join(DataDir, "cases.xlsx")
 ReportDir = os.path.join(BaseDir, "reports")
 #报告文件路径
 report_file = os.path.join(ReportDir, "report.html")
+
+print(DataDir)
+print(config_path)

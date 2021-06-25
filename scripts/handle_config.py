@@ -1,6 +1,7 @@
 from configparser import ConfigParser
 from scripts.handle_os import config_path
 
+
 class HandleConfig:
 
     def __init__(self, filename):
@@ -70,4 +71,7 @@ class HandleConfig:
             with open(filename, mode="w", encoding="utf-8") as file:
                 config.write(file)
 
+
 do_config = HandleConfig(config_path)
+if __name__ == '__main__':
+    do_config = HandleConfig(config_path)
