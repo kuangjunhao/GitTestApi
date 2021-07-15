@@ -1,5 +1,6 @@
 import requests
 import json
+from scripts.handle_config import do_config
 
 
 class HandleRequest:
@@ -50,12 +51,34 @@ class HandleRequest:
         """
         self.one_session.close()
 
-if __name__ == '__main__':
-    re=HandleRequest()
-    url = "http://test2.mg.zhongbaojinfu.com.cn/api/login"
-    data = {"username": "kaungjh", "password": "abc455318938"}
-    value=re.do_request(url=url,method ="post", data=data, is_json=True)
-    print(value.text)
-    token=json.loads(value.text)["data"]["accessToken"]
-    print(token)
-    #大幅度发
+    def get_token(self):
+        result = self.do_request(
+                        url="http://test2.mg.zhongbaojinfu.com.cn/sm-api/user/login",
+                        data={"username": "kaungjh", "password": "abc455318938"},
+                        is_json=True)
+        return json.loads(result.text)["data"]["accessToken"]
+# if __name__ == '__main__':
+#     re=HandleRequest()
+#     # url = "http://test2.mg.zhongbaojinfu.com.cn/sm-api/user/login"
+#     # data = {"username": "kaungjh", "password": "abc455318938","validateCode":None}
+#     # value=re.do_request(url=url,method ="post", data=data, is_json=True)
+#     # token=json.loads(value.text)["data"]["accessToken"]
+#     # co="vue_admin_template_token="+token
+#     # print(co)
+#     # heads = {"access-token": token}
+#
+#     tokens=re.get_token()
+#     print(tokens)
+#     print(type(tokens))
+#
+#
+#     # shop_url="http://test2.mg.zhongbaojinfu.com.cn/sm-api/shop/insert"
+#     # shop_data = {"id":None,"name":"自动化店铺","desc":"这是一个描述","code":"ZBJF","exhibitionChannel":"1"}
+#     # shop_value = re.do_request(
+#     #                             url=shop_url,
+#     #                             method="post",
+#     #                             data=shop_data,
+#     #                             is_json=True,
+#     #                             head=heads
+#     # )
+#     # print(shop_value.text)
