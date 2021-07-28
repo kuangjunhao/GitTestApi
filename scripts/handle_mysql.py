@@ -47,13 +47,13 @@ class HandleMysql:
         self.connect.close()
 
 if __name__ == '__main__':
-    sql='select id from stock_commodity_category ORDER BY create_time DESC LIMIT 0,1'
+    sql='select COUNT(*) as count from service_mall.shop'
     mysql=HandleMysql(host=do_config.get_value("mysql", "host"),  # 地址
                                 user=do_config.get_value("mysql", "user"),  # 账号
                                 pwd=do_config.get_value("mysql", "password"),  # 密码
-                                db=do_config.get_value("mysql", "db"),  # 库名
+                                db=do_config.get_value("mysql", "service_db"),  # 库名
                                 port=do_config.get_int("mysql", "port"))
     data=mysql.run_sql(sql=sql)
     mysql.close_sql()
     print(data)
-    print(data["id"])
+    print(data["count"])
